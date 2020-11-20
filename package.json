@@ -1,0 +1,35 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "A Nodejs app for URL SHORTENER",
+  "main": "app.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "mongodb",
+    "express'"
+  ],
+  "author": {
+    "name": "Bineet Naidu",
+    "url": "https://bineetnaidu.web.app"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15",
+    "morgan": "^1.10.0"
+  }
+}
