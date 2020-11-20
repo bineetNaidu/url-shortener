@@ -1,23 +1,22 @@
 /* eslint-disable comma-dangle */
-import { Schema, Model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const URLschema = new Schema(
+const URLschema = new mongoose.Schema(
   {
     original_url: {
       type: String,
       required: true,
       unique: true,
     },
-    shorten_url: {
+    slug: {
       type: String,
       required: true,
       unique: true,
     },
   },
   {
-    _id: false,
     timestamps: true,
   }
 );
 
-export default Model('URLschema', URLschema);
+export default mongoose.model('URLschema', URLschema);
