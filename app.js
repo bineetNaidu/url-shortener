@@ -1,8 +1,10 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import express from 'express';
 import cors from 'cors';
 import logger from 'morgan';
 import mongoose from 'mongoose';
+import router from './routes/router.js';
 
 const app = express();
 
@@ -11,6 +13,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true,
+    useCreateIndex: true,
   })
   .then(() => console.log('MONGODB Started'))
   .catch((err) => {
@@ -22,6 +25,6 @@ app.use(logger('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (_, res) => res.json({ hello: 'world' }));
+app.use(router);
 
 app.listen(process.env.PORT || 4242, () => console.log('Server has started'));
