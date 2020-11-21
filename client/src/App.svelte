@@ -1,6 +1,28 @@
 <script lang="ts">
+  import Axios from 'axios';
+
+  type BodyTypes = {
+    url: string;
+    slug?: string;
+  };
+
   let url: string = '';
   let slug: string = '';
+
+  const handleSubmit = async () => {
+    if (url !== '') {
+      let data: BodyTypes;
+      if (slug !== '') {
+        data = { url, slug };
+      } else {
+        data = { url };
+      }
+      const res = await Axios.post('http://localhost:4242/', data);
+      console.log(res);
+    } else {
+      alert('You need to fill out the fields...');
+    }
+  };
 </script>
 
 <style>
@@ -52,7 +74,7 @@
 
 <main>
   <h1>Url Shortener</h1>
-  <form class="url_form">
+  <form class="url_form" on:submit|preventDefault={handleSubmit}>
     <input type="text" required bind:value={url} placeholder="Url" />
     <input type="text" bind:value={slug} hidden />
     <button type="submit">Submit</button>
