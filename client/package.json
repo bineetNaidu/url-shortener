@@ -1,6 +1,7 @@
 {
   "name": "url-shortener-client",
   "version": "1.0.0",
+  "proxy": "http://localhost:4242/",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
