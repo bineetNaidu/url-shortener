@@ -1,5 +1,6 @@
 <script lang="ts">
-  export let name: string;
+  let url: string = '';
+  let slug: string = '';
 </script>
 
 <style>
@@ -8,13 +9,34 @@
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  form.url_form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+  }
+
+  form.url_form > input {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 2rem;
+    border-radius: 4px;
+    border-width: 1px;
+  }
+
+  form.url_form > button {
+    padding: 0.5rem 3rem;
+    background-color: rgb(255 87 8 / 79%);
+    border-width: 1px;
+    color: white;
+    outline-width: 0px;
   }
 
   @media (min-width: 640px) {
@@ -24,11 +46,15 @@
   }
 </style>
 
+<svelte:head>
+  <title>Url Shortener</title>
+</svelte:head>
+
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
+  <h1>Url Shortener</h1>
+  <form class="url_form">
+    <input type="text" required bind:value={url} placeholder="Url" />
+    <input type="text" bind:value={slug} hidden />
+    <button type="submit">Submit</button>
+  </form>
 </main>
