@@ -8,6 +8,7 @@
 
   let url: string = '';
   let slug: string = '';
+  let apiRes: BodyTypes;
 
   const handleSubmit = async () => {
     if (url !== '') {
@@ -18,7 +19,9 @@
         data = { url };
       }
       const res = await Axios.post('http://localhost:4242/', data);
-      console.log(res);
+      if (res.data.success) {
+        apiRes = res.data.url;
+      }
     } else {
       alert('You need to fill out the fields...');
     }
@@ -79,4 +82,8 @@
     <input type="text" bind:value={slug} hidden />
     <button type="submit">Submit</button>
   </form>
+
+  {#if apiRes}
+    <pre>{JSON.stringify(apiRes, null, 2)}</pre>
+  {/if}
 </main>
